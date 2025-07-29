@@ -1,19 +1,40 @@
+import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Div = styled.div`
-  /* min-height: 100vh; */
+const Content = styled.div`
+  background: lightgray;
+  padding: 120px 0;
+`
+
+const H2 = styled.div`
   text-align: center;
-  color: red;
-  background: black;
 `
 
 function App() {
+  const Header = () => <div>ХЕДЕР</div>
+  const Footer = () => <div>ФУТЕР</div>
   //
   return (
-    <Div>
-      <div>123</div>
-      <i className='fa fa-calendar'></i>
-    </Div>
+    <>
+      <Header />
+
+      <Content>
+        <H2>КОНТЕНТ СТРАНИЦЫ</H2>
+
+        <Routes>
+          <Route path='/' element={<div> Главная страница</div>} />
+          <Route path='/login' element={<div> Авторизация </div>} />
+          <Route path='/register' element={<div> Регистрация </div>} />
+          <Route path='/users' element={<div> Пользователи </div>} />
+          <Route path='/post' element={<div> Статья </div>} />
+          <Route path='/post/:postid' element={<div> Новая статья </div>} />
+
+          <Route path='*' element={<div> Ошибка </div>} />
+        </Routes>
+      </Content>
+
+      <Footer />
+    </>
   )
 }
 
