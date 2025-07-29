@@ -1,7 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
+import Header from './components/header/Header'
 
 const Content = styled.div`
+  /* min-height: 100vh; */
   background: lightgray;
   padding: 120px 0;
 `
@@ -10,12 +12,22 @@ const H2 = styled.div`
   text-align: center;
 `
 
+const AppColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1000px;
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+`
+
+const Footer = () => <div style={{ backgroundColor: 'pink' }}>ФУТЕР</div>
+
 function App() {
-  const Header = () => <div>ХЕДЕР</div>
-  const Footer = () => <div>ФУТЕР</div>
   //
   return (
-    <>
+    <AppColumn>
       <Header />
 
       <Content>
@@ -34,7 +46,7 @@ function App() {
       </Content>
 
       <Footer />
-    </>
+    </AppColumn>
   )
 }
 
