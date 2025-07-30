@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './components/header/Header'
+import Footer from './components/footer/footer'
 
 const Content = styled.div`
   /* min-height: 100vh; */
@@ -22,7 +23,8 @@ const AppColumn = styled.div`
   background-color: #fff;
 `
 
-const Footer = () => <div style={{ backgroundColor: 'pink' }}>ФУТЕР</div>
+// РЕАЛИЗАЦИЯ ФУТЕРА + СОЗДАТЬ КОМПОНЕНТ КАК ХЕДЕР
+// 14. Получение информации о погоде
 
 function App() {
   //
