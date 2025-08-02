@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './components/header/Header'
-import Footer from './components/footer/footer'
+import Footer from './components/footer/Footer'
+import Authorization from './pages/authorization/Authorization'
 
 const Content = styled.div`
   /* min-height: 100vh; */
@@ -23,8 +24,9 @@ const AppColumn = styled.div`
   background-color: #fff;
 `
 
-// РЕАЛИЗАЦИЯ ФУТЕРА + СОЗДАТЬ КОМПОНЕНТ КАК ХЕДЕР
-// 14. Получение информации о погоде
+// 7. NEXT Страница Регистрация
+
+// json-server --watch src/db.json --port 3003
 
 function App() {
   //
@@ -37,7 +39,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<div> Главная страница</div>} />
-          <Route path='/login' element={<div> Авторизация </div>} />
+          <Route path='/login' element={<Authorization />} />
           <Route path='/register' element={<div> Регистрация </div>} />
           <Route path='/users' element={<div> Пользователи </div>} />
           <Route path='/post' element={<div> Статья </div>} />

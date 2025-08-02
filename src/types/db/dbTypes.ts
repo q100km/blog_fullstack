@@ -1,9 +1,18 @@
+import type { ISession } from '../../backend for front/createSession'
+
 export interface IUser {
   id?: string
   login: string
   password: string
   registred_at: string
   role_id: number
+}
+
+export interface IAuthUser {
+  id: string
+  login: string
+  roleId: number
+  session: ISession
 }
 
 export interface IPost {

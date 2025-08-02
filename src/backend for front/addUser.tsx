@@ -16,9 +16,13 @@ export const addUser = async (regLogin: string, regPassword: string): Promise<IU
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
-    body: JSON.stringify({
-      newUser,
-    }),
+
+    // body: JSON.stringify({
+    //   newUser,
+    // }),
+    // БЫЛ ВЛОЖЕННЫЙ ОБЬЕКТ {newUser} исправил на обычный newUser
+
+    body: JSON.stringify(newUser),
   })
 
   return response.json()

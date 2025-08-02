@@ -3,7 +3,7 @@ import type { IStyledProps } from '../Icon/Icon'
 import { useEffect, useState } from 'react'
 
 const FooterContainer = ({ className }: IStyledProps) => {
-  const [weaterData, setWeaterData] = useState('')
+  const [weaterData, setWeaterData] = useState(null)
 
   const key = '98307459efa27dfff9f2c0c760bebc25'
   const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?q=${'nizhnevartovsk'}&lang=ru&units=metric&appid=${key}`

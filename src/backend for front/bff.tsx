@@ -1,22 +1,27 @@
+import { ROLE } from '../constants/role'
+import { logout } from '../redux/actionts'
 import { addUser } from './addUser'
-import { createSession } from './createSession'
+import { addSession } from './createSession'
 import { getUser } from './getUser'
-
-// 9. Первичная реализация BFF. Рефакторинг. Сессии
-//  рефактор дублирования функций вынести в другие файлы
+import { sessions } from './sessions'
 
 export const server = {
   //                      авторизация
   async authorize(authLogin: string, authPassword: string) {
     const user = await getUser(authLogin)
 
-    if (!user) return { error: 'юзер не найден', res: null }
+    if (!user) return { error: ': Пользователь не найден', res: null }
 
     if (authPassword !== user.password) return { error: 'неверный пароль', res: null }
 
     return {
       error: null,
-      res: createSession(user.role_id),
+      res: {
+        id: user.id,
+        login: user.login,
+        roleId: user.role_id,
+        session: sessions.create(user),
+      },
     }
   },
 
@@ -30,8 +35,17 @@ export const server = {
 
     return {
       error: null,
-      res: createSession(newUser.role_id),
+      res: {
+        id: newUser.id,
+        login: newUser.login,
+        roleId: newUser.role_id,
+        session: sessions.create(newUser),
+      },
     }
     //
+  },
+  //                        logout
+  async logout(session) {
+    sessions.remove(session)
   },
 }

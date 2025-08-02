@@ -1,28 +1,57 @@
 import styled from 'styled-components'
 import { Icon, type IStyledProps } from '../../Icon/Icon'
 import { NavLink, useNavigate } from 'react-router-dom'
+import Button from '../../button/button'
+import { ROLE } from '../../../constants/role'
+import { useAppDispatch, useAppSelector } from '../../../redux/store'
+import { selectUserLogin, selectUserRole, selectUserSession } from '../../../redux/selectors'
+import { server } from '../../../backend for front/bff'
+import { actions as a, logout } from '../../../redux/actionts'
 
 const RightAligned = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `
 
-const Button = styled.button`
+const UserName = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   font-size: 18px;
-  width: 100px;
-  height: 32px;
+  font-weight: bold;
+`
+
+const LogOutIcon = styled.div`
   cursor: pointer;
 `
 
 const ControlPanelContainer = ({ className }: IStyledProps) => {
   const navigate = useNavigate()
+  const roleId = useAppSelector(selectUserRole)
+  const login = useAppSelector(selectUserLogin)
+  const session = useAppSelector(selectUserSession)
+  const dispatch = useAppDispatch()
 
   return (
     <div className={className}>
       <RightAligned>
-        <NavLink to='/login'>
-          <Button>Войти</Button>
-        </NavLink>
+        {roleId === ROLE.GUEST ? (
+          <NavLink to='/login'>
+            <Button>Войти</Button>
+          </NavLink>
+        ) : (
+          <>
+            <UserName>{login}</UserName>
+            <LogOutIcon>
+              <Icon
+                id='fa-sign-out'
+                margin='0 0 0 10px'
+                onClick={() => dispatch(logout(session))}
+              />
+            </LogOutIcon>
+          </>
+        )}
       </RightAligned>
 
       <RightAligned>

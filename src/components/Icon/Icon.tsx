@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
 export interface IStyledProps {
@@ -5,10 +6,13 @@ export interface IStyledProps {
   id?: string
   size?: string
   margin?: string
+  children?: ReactNode
+  width?: string
+  onClick?: () => void
 }
 
-const IconContainer = ({ className, id }: IStyledProps) => (
-  <div className={className}>
+const IconContainer = ({ className, id, ...props }: IStyledProps) => (
+  <div className={className} {...props}>
     <i className={`fa ${id}`} aria-hidden='true'></i>
   </div>
 )

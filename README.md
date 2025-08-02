@@ -19,7 +19,7 @@
 -схема текущего пользователя: login / password / role
 
 Схема для редакс стор на клиенте:
--user: id / login / roleId
+-user: id / login / roleId / session
 -posts: []post : id / title / imageUrl / published_at / commentsCount
 -post: id / title / imageUrl / content / publushedAt / comments: []comment : id / author / content / publishedAt
 -users: []user: id / login / registredAt / role
